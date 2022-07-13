@@ -5,7 +5,6 @@ sys.path.append('D:\Python\Toy_Project\Aurora_Failover_Error_Message\config')
 import config
 from datetime import datetime, timedelta
 
-
 client_rds=boto3.client('rds', config.CON_INFO['region'])
 client_log=boto3.client('logs', config.CON_INFO['region'])
 
