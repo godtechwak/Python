@@ -3,7 +3,7 @@ import sys
 import os
 import warnings
 
-sys.path.append('D:\Python\py_220712\config')
+sys.path.append('.\config')
 import config
 
 os.environ['LIBMYSQL_ENABLE_CLEARTEXT_PLUGIN'] = '1'
