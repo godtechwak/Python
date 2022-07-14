@@ -5,6 +5,8 @@ sys.path.append('/home/ec2-user/config')
 import config
 from datetime import datetime, timedelta
 import time
+import warnings
+warnings.filterwarnings('ignore')
 
 client_rds=boto3.client('rds', config.CON_INFO['region'])
 client_log=boto3.client('logs', config.CON_INFO['region'])
@@ -39,7 +41,7 @@ def get_db_instance_n_log_event(befter_datetime):
         )
 
         with open("failover_{}.txt".format(datetime.strftime(datetime.now(),'%Y-%m-%d-%H-%M-%S')), "w") as f:
-                [f.write(events['message']) for events in response['events']]
+                [f.write(events['message']+'\n') for events in response['events']]
 
 
 if __name__ == "__main__":
@@ -48,7 +50,7 @@ if __name__ == "__main__":
 
         get_failover_date()
 
-        if date_time==[]:
-            exit()
-        else:
+        try:
             get_db_instance_n_log_event(date_time)
+        except IndexError:
+            print('Not Exists Failover Event')
