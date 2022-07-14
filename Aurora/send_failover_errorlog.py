@@ -1,7 +1,7 @@
 import boto3
 import math
 import sys
-sys.path.append('/home/ec2-user/config')
+sys.path.append('./config')
 import config
 from datetime import datetime, timedelta
 import time
