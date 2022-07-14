@@ -38,7 +38,6 @@ def get_db_instance_n_log_event(befter_datetime):
             endTime=(math.trunc(time.mktime(b_datetime.timetuple()))*1000)
         )
 
-        #[print(events['message']) for events in response['events']]
         with open("failover_{}.txt".format(datetime.strftime(datetime.now(),'%Y-%m-%d-%H-%M-%S')), "w") as f:
                 [f.write(events['message']) for events in response['events']]
 
